@@ -9,8 +9,8 @@ namespace Domain.Account
     public interface IAuthenticate
     {
         Task<bool> Authenticate(string email, string password);
-        Task<bool> RegisterUser(string name, string email, string password);
-        Task<bool> UpdateUser(string idUser, string name, string email, string password);
+        Task<bool> RegisterUser(string name, string email, string password, int userType);
+        Task<bool> UpdateUser(string idUser, string name, string email, string password, int userType);
 
         Task Logout();
     }

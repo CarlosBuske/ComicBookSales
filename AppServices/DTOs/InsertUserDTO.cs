@@ -18,5 +18,7 @@ namespace AppServices.DTOs
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+        [Required]
+        public int UserType { get; set; }
     }
 }

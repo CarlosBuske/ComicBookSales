@@ -12,6 +12,8 @@ namespace Class.Identity
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private const int USER_TYPE = 1;
+        private const int ADMIN_TYPE = 2;
         public AuthenticateService(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
@@ -24,7 +26,7 @@ namespace Class.Identity
             return result.Succeeded;
         }
 
-        public async Task<bool> RegisterUser(string name, string email, string password)
+        public async Task<bool> RegisterUser(string name, string email, string password, int userType)
         {
             var applicationUser = new ApplicationUser
             {
@@ -36,13 +38,19 @@ namespace Class.Identity
 
             if (result.Succeeded)
             {
+                var adminUserType = ADMIN_TYPE == userType;
+                if (adminUserType)
+                    _userManager.AddToRoleAsync(applicationUser, "Admin").Wait();
+                else
+                    _userManager.AddToRoleAsync(applicationUser, "User").Wait();
+
                 await _signInManager.SignInAsync(applicationUser, isPersistent: false);
             }
 
             return result.Succeeded;
         }
 
-        public async Task<bool> UpdateUser(string idUser ,string name, string email, string password)
+        public async Task<bool> UpdateUser(string idUser ,string name, string email, string password, int userType)
         {
             var applicationUser = new ApplicationUser
             {
@@ -60,6 +68,12 @@ namespace Class.Identity
 
             if (result.Succeeded && resultPassword.Succeeded)
             {
+                var adminUserType = ADMIN_TYPE == userType;
+                if (adminUserType)
+                    _userManager.AddToRoleAsync(applicationUser, "Admin").Wait();
+                else
+                    _userManager.AddToRoleAsync(applicationUser, "User").Wait();
+
                 await _signInManager.SignInAsync(applicationUser, isPersistent: false);
             }
 

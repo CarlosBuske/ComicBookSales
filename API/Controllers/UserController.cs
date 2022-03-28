@@ -15,7 +15,6 @@ namespace API.Controllers
     {
         private readonly IAuthenticate _authentication;
         private readonly ISeedRoleInitial _seedRoleInitial;
-
         public UserController (IAuthenticate authentication, ISeedRoleInitial seedRoleInitial)
         {
             _authentication = authentication;
@@ -43,7 +42,7 @@ namespace API.Controllers
         [Route("Register")]
         public async Task<ResultServices> Register(InsertUserDTO User)
         {
-            var registerUser = await _authentication.RegisterUser(User.Name, User.Email, User.Password);
+            var registerUser = await _authentication.RegisterUser(User.Name, User.Email, User.Password, User.UserType);
             if (registerUser)
                 return ResultServices.Ok("Usuario registrado!");
             else
@@ -56,7 +55,7 @@ namespace API.Controllers
         [Route("Update")]
         public async Task<ResultServices> UpdateUser(InsertUserDTO User)
         {
-            var registerUser = await _authentication.UpdateUser(User.Id.ToString(), User.Name, User.Email, User.Password);
+            var registerUser = await _authentication.UpdateUser(User.Id.ToString(), User.Name, User.Email, User.Password, User.UserType);
             if (registerUser)
                 return ResultServices.Ok("Usuario atualizar registro!");
             else
