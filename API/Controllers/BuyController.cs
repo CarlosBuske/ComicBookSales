@@ -18,8 +18,8 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        [Route("Checkout")]
         [Authorize(Roles = "User")]
+        [Route("Checkout")]
         public async Task<ResultServices> Checkout(CheckoutDTO checkouDTO)
         {
             var ResultCheckout = await _buyServices.Checkout(checkouDTO);
