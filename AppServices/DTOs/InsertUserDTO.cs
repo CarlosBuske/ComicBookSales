@@ -10,7 +10,6 @@ namespace AppServices.DTOs
     public class InsertUserDTO
     {
         public int Id { get; set; }
-        public int IdUserType { get; set; }
 
         [Required]
         public string Name { get; set; }
