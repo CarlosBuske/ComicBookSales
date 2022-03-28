@@ -16,6 +16,7 @@ namespace API.Controllers
         {
             _userTypeServices = userTypeServicesService;
         }
+
         [HttpPost]
         public async Task<ResultServices<UserTypeDTO>> CreateOrUpdateAsync(InsertUserTypeDTO userType)
         {
