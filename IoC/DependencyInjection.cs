@@ -4,6 +4,7 @@ using AppServices.Services.Interface;
 using AutoMapper;
 using Class.Context;
 using Class.Repositories;
+using Domain.Repositories.Interface;
 using Domain.Repository.Interface;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -25,10 +26,14 @@ namespace IoC
             
 
             services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IUserTypeService, UserTypeService>();
             services.AddScoped<IUserRepository, UserRepository>();
+
+            services.AddScoped<IUserTypeService, UserTypeService>();
+            services.AddScoped<IUserTypeRepository, UserTypeRepository>();
+
             services.AddScoped<IComicBookService, ComicBookService>();
             services.AddScoped<IComicBookRepository, ComicBookRepository>();
+
             services.AddScoped<IBuyService, BuyService>();
             services.AddScoped<IBuyRepository, BuyRepository>();
 
