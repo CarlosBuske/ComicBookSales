@@ -1,0 +1,46 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "9b4a7cdc-757e-4866-a412-d884ddf63120": {
+      "ProjectGuid": "9b4a7cdc-757e-4866-a412-d884ddf63120",
+      "DisplayName": "Domain",
+      "ColorIndex": 0
+    },
+    "2be606d1-f89d-4435-9ad7-4a8457b7f129": {
+      "ProjectGuid": "2be606d1-f89d-4435-9ad7-4a8457b7f129",
+      "DisplayName": "Class",
+      "ColorIndex": 1
+    },
+    "01153b76-0916-45eb-af7d-38b3107d2052": {
+      "ProjectGuid": "01153b76-0916-45eb-af7d-38b3107d2052",
+      "DisplayName": "AppServices",
+      "ColorIndex": 2
+    },
+    "1a778c85-f281-4cb1-a625-58fd4b42a5cf": {
+      "ProjectGuid": "1a778c85-f281-4cb1-a625-58fd4b42a5cf",
+      "DisplayName": "IoC",
+      "ColorIndex": 3
+    },
+    "493d3e17-f187-451f-b659-57f494a1835d": {
+      "ProjectGuid": "493d3e17-f187-451f-b659-57f494a1835d",
+      "DisplayName": "API",
+      "ColorIndex": 4
+    },
+    "a67d6ed5-2187-4c7b-b0e5-b2a907112c0a": {
+      "ProjectGuid": "a67d6ed5-2187-4c7b-b0e5-b2a907112c0a",
+      "DisplayName": "Class",
+      "ColorIndex": 5
+    },
+    "a0985f66-6d86-4a89-aec6-08c1913b2253": {
+      "ProjectGuid": "a0985f66-6d86-4a89-aec6-08c1913b2253",
+      "DisplayName": "TESTE",
+      "ColorIndex": 6
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Arquivos Diversos",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 7
+}
