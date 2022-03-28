@@ -20,7 +20,7 @@ namespace Class.Identity
             {
                 ApplicationUser user = new ApplicationUser()
                 {
-                    UserName = "Default User",
+                    UserName = "DefaultUser",
                     Email = "user@local.com",
                     NormalizedUserName = "DEFAULT USER",
                     NormalizedEmail = "USER@LOCAL.COM",
@@ -43,7 +43,7 @@ namespace Class.Identity
             {
                 ApplicationUser user = new ApplicationUser()
                 {
-                    UserName = "Default Admin",
+                    UserName = "DefaultAdmin",
                     Email = "admin@local.com",
                     NormalizedUserName = "DEFAULT ADMIN",
                     NormalizedEmail = "ADMIN@LOCAL.COM",
