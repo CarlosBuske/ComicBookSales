@@ -21,7 +21,7 @@ namespace Class.Identity
         public async Task<bool> Authenticate(string email, string password)
         {
             var result = await _signInManager.PasswordSignInAsync(email, password, false, lockoutOnFailure: false);
-            throw new NotImplementedException();
+            return result.Succeeded;
         }
 
         public async Task<bool> RegisterUser(string name, string email, string password)
