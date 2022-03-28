@@ -20,9 +20,9 @@ namespace Class.Identity
             {
                 ApplicationUser user = new ApplicationUser()
                 {
-                    UserName = "DefaultUser",
+                    UserName = "user@local.com",
                     Email = "user@local.com",
-                    NormalizedUserName = "DEFAULT USER",
+                    NormalizedUserName = "USER@LOCAL.COM",
                     NormalizedEmail = "USER@LOCAL.COM",
                     EmailConfirmed = true,
                     LockoutEnabled = false,
@@ -43,9 +43,9 @@ namespace Class.Identity
             {
                 ApplicationUser user = new ApplicationUser()
                 {
-                    UserName = "DefaultAdmin",
+                    UserName = "admin@local.com",
                     Email = "admin@local.com",
-                    NormalizedUserName = "DEFAULT ADMIN",
+                    NormalizedUserName = "ADMIN@LOCAL.COM",
                     NormalizedEmail = "ADMIN@LOCAL.COM",
                     EmailConfirmed = true,
                     LockoutEnabled = false,

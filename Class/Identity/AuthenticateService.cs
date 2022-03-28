@@ -28,7 +28,7 @@ namespace Class.Identity
         {
             var applicationUser = new ApplicationUser
             {
-                UserName = name,
+                UserName = email,
                 Email = email,
             };
 
@@ -47,7 +47,7 @@ namespace Class.Identity
             var applicationUser = new ApplicationUser
             {
                 Id = idUser,
-                UserName = name,
+                UserName = email,
                 Email = email,
             };
 
