@@ -27,8 +27,6 @@ namespace IoC
 
             services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
-            services.ConfigureApplicationCookie(options => options.AccessDeniedPath = "Account/Login");
-
             services.AddScoped<IAuthenticate, AuthenticateService>();
             services.AddScoped<ISeedRoleInitial, SeedUserRoleInitial>();
             services.AddScoped<IComicBookService, ComicBookService>();
