@@ -28,6 +28,7 @@ namespace API.Controllers
         
         [HttpPost]
         [AllowAnonymous]
+        [Route("Login")]
         public async Task<ResultServices> Login(string email, string password)
         {
             var LoggedUser = await _authentication.Authenticate(email, password);
@@ -39,6 +40,7 @@ namespace API.Controllers
         
         [HttpPost]
         [AllowAnonymous]
+        [Route("Register")]
         public async Task<ResultServices> Register(InsertUserDTO User)
         {
             var registerUser = await _authentication.RegisterUser(User.Name, User.Email, User.Password);
@@ -51,6 +53,7 @@ namespace API.Controllers
 
         [HttpPost]
         [AllowAnonymous]
+        [Route("Update")]
         public async Task<ResultServices> UpdateUser(InsertUserDTO User)
         {
             var registerUser = await _authentication.UpdateUser(User.Id.ToString(), User.Name, User.Email, User.Password);
@@ -62,6 +65,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
+        [Route("Logout")]
         public async Task<ResultServices> Logout()
         {
             await _authentication.Logout();

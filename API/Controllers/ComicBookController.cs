@@ -22,6 +22,7 @@ namespace API.Controllers
 
         [HttpGet]
         [AllowAnonymous]
+        [Route("ListAll")]
         public async Task<ResultServices<ResultListComicBookDTO>> ListAll(int Page = PAGE_DEFAULT, int Registers = REGISTERS_DEFAULT)
         {
             var ListComicBook = await _comicBookServices.ListAll(Registers, Page);
@@ -30,6 +31,7 @@ namespace API.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
+        [Route("CreateOrUpdate")]
         public async Task<ResultServices<ComicBookDTO>> CreateOrUpdateAsync(InsertComicBookDTO comicBook)
         {
             var comicbook = await _comicBookServices.CreateOrUpdateAsync(comicBook);
@@ -38,6 +40,7 @@ namespace API.Controllers
 
         [HttpGet]
         [AllowAnonymous]
+        [Route("Details")]
         public async Task<ResultServices<ComicBookDTO>> Details(int IdComicBook)
         {
             var ComicBook = await _comicBookServices.ComicBookDetails(IdComicBook);
