@@ -32,10 +32,6 @@ namespace Class.Maps
                 .IsRequired()
                 ;
 
-            builder.HasOne(x => x.User)
-                .WithMany(x => x.Buy)
-                .HasForeignKey(x => x.IdUser)
-                ;
         }
     }
 }

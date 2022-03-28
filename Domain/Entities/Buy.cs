@@ -14,7 +14,6 @@ namespace Domain.Entities
         public  int IdUser { get; private set; }
         public  decimal TotalValue { get; private set; }
         public  DateTime Date { get; private set; }
-        public virtual User User { get; private set; }
 
         [NotMapped]
         public ICollection<PurchaseItems> PurchaseItems { get; private set; }
@@ -23,20 +22,18 @@ namespace Domain.Entities
         {
 
         }
-        public Buy(int iduser, decimal totalvalue, DateTime date, User user, List<PurchaseItems> purchaseItems)
+        public Buy(int iduser, decimal totalvalue, DateTime date, List<PurchaseItems> purchaseItems)
         {
             Validation(iduser, totalvalue);
 
             IdUser = iduser;
             TotalValue = totalvalue;
             Date = DateTime.Now;
-            User = user;
             PurchaseItems = purchaseItems;
         }
 
         private void Validation(int iduser, decimal totalvalue)
         {
-            ValidationException.When(iduser <= 0, "Comprador deve ser informado!");
             ValidationException.When(totalvalue <= 0, "Valor total incorreto!");
         }
     }

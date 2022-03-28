@@ -13,7 +13,6 @@ namespace AppServices.DTO
         public int IdUser { get; private set; }
         public decimal TotalValue { get; private set; }
         public DateTime Date { get; private set; }
-        public virtual UserDTO User { get; private set; }
         public List<PurchaseItems> PurchaseItems { get; private set; }
     }
 }

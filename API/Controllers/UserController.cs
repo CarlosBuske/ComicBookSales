@@ -2,7 +2,9 @@
 using AppServices.DTOs;
 using AppServices.Services.Interface;
 using AppServices.Utility;
+using Domain.Account;
 using Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -11,26 +13,60 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly IUserService _userServices;
+        private readonly IAuthenticate _authentication;
+        private readonly ISeedRoleInitial _seedRoleInitial;
 
-        public UserController(IUserService userService)
+        public UserController (IAuthenticate authentication, ISeedRoleInitial seedRoleInitial)
         {
-            _userServices = userService;
+            _authentication = authentication;
+            _seedRoleInitial = seedRoleInitial;
+
+            _seedRoleInitial.SeedRoles();
+            _seedRoleInitial.SeedUsers();
         }
 
         
-        [HttpGet]
-        public async Task<ResultServices<UserDTO>> Login(string email, string password)
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<ResultServices> Login(string email, string password)
         {
-            var LoggedUser = await _userServices.LoginAsync(email, password);
-            return LoggedUser;
+            var LoggedUser = await _authentication.Authenticate(email, password);
+            if (!LoggedUser)
+                return ResultServices.Fail(String.Format("Email ou senha invalido!"));
+            else
+                return ResultServices.Ok("Usuario logado!");
+        }
+        
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<ResultServices> Register(InsertUserDTO User)
+        {
+            var registerUser = await _authentication.RegisterUser(User.Name, User.Email, User.Password);
+            if (registerUser)
+                return ResultServices.Ok("Usuario registrado!");
+            else
+                return ResultServices.Fail(String.Format("Falha ao registrar!"));
+
         }
 
         [HttpPost]
-        public async Task<ResultServices<UserDTO>> CreateOrUpdateAsync(InsertUserDTO User)
+        [AllowAnonymous]
+        public async Task<ResultServices> UpdateUser(InsertUserDTO User)
         {
-            var user = await _userServices.CreateOrUpdateAsync(User);
-            return user;
+            var registerUser = await _authentication.UpdateUser(User.Id.ToString(), User.Name, User.Email, User.Password);
+            if (registerUser)
+                return ResultServices.Ok("Usuario atualizar registro!");
+            else
+                return ResultServices.Fail(String.Format("Falha ao atualizar registro!"));
+
         }
+
+        [HttpGet]
+        public async Task<ResultServices> Logout()
+        {
+            await _authentication.Logout();
+            return ResultServices.Ok("Logout efetuado!");
+        }
+
     }
 }

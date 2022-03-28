@@ -3,9 +3,11 @@ using AppServices.Services;
 using AppServices.Services.Interface;
 using AutoMapper;
 using Class.Context;
+using Class.Identity;
 using Class.Repositories;
-using Domain.Repositories.Interface;
+using Domain.Account;
 using Domain.Repository.Interface;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,21 +25,18 @@ namespace IoC
         {
             services.AddDbContext<ApplicationDbContext>(x => x.UseNpgsql(configuration.GetConnectionString("PostgressConection")));
 
-            
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
-            services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IUserRepository, UserRepository>();
+            services.ConfigureApplicationCookie(options => options.AccessDeniedPath = "Account/Login");
 
-            services.AddScoped<IUserTypeService, UserTypeService>();
-            services.AddScoped<IUserTypeRepository, UserTypeRepository>();
-
+            services.AddScoped<IAuthenticate, AuthenticateService>();
+            services.AddScoped<ISeedRoleInitial, SeedUserRoleInitial>();
             services.AddScoped<IComicBookService, ComicBookService>();
             services.AddScoped<IComicBookRepository, ComicBookRepository>();
 
             services.AddScoped<IBuyService, BuyService>();
             services.AddScoped<IBuyRepository, BuyRepository>();
 
-            
             services.AddAutoMapper(typeof(DomainToDTOMapping));
             services.AddAutoMapper(typeof(DtoToDomain));
 

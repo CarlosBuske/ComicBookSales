@@ -24,6 +24,7 @@ namespace AppServices.Services
             _comicbookRepository = comicbookRepository;
             _mapper = mapper;
         }
+
         public async Task<ResultServices<ComicBookDTO>> ComicBookDetails(int id)
         {
             var comicbook = await _comicbookRepository.GetById(id);

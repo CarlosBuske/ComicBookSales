@@ -1,4 +1,5 @@
 using Class.Context;
+using Domain.Account;
 using IoC;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,8 +21,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.UseHttpsRedirection();
 

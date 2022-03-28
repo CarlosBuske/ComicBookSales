@@ -2,6 +2,7 @@
 using AppServices.DTOs;
 using AppServices.Services.Interface;
 using AppServices.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -20,6 +21,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ResultServices<ResultListComicBookDTO>> ListAll(int Page = PAGE_DEFAULT, int Registers = REGISTERS_DEFAULT)
         {
             var ListComicBook = await _comicBookServices.ListAll(Registers, Page);
@@ -27,10 +29,19 @@ namespace API.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ResultServices<ComicBookDTO>> CreateOrUpdateAsync(InsertComicBookDTO comicBook)
         {
             var comicbook = await _comicBookServices.CreateOrUpdateAsync(comicBook);
             return comicbook;
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<ResultServices<ComicBookDTO>> Details(int IdComicBook)
+        {
+            var ComicBook = await _comicBookServices.ComicBookDetails(IdComicBook);
+            return ComicBook;
         }
     }
 }

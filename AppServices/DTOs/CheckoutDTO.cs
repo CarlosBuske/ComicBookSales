@@ -9,10 +9,10 @@ namespace AppServices.DTOs
 {
     public class CheckoutDTO
     {
-        public int Id { get; private set; }
-        public int IdUser { get; private set; }
-        public decimal TotalValue { get; private set; }
-        public DateTime Date { get; private set; }
-        public List<PurchaseItemsDTO> PurchaseItems { get; private set; }
+        public int Id { get;  set; }
+        public int IdUser { get;  set; }
+        public decimal TotalValue { get;  set; }
+        public DateTime Date { get;  set; }
+        public List<PurchaseItemsDTO> PurchaseItems { get;  set; }
     }
 }

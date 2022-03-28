@@ -1,6 +1,7 @@
 ﻿using AppServices.DTOs;
 using AppServices.Services.Interface;
 using AppServices.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -17,6 +18,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "User")]
         public async Task<ResultServices> Checkout(CheckoutDTO checkouDTO, int idUser)
         {
             var ResultCheckout = await _buyServices.Checkout(checkouDTO, idUser);
