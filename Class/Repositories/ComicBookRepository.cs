@@ -24,12 +24,12 @@ namespace Class.Repositories
 
             if (newComicBook)
             {
-                _db.Add(newComicBook);
+                _db.Add(comicbook);
                 await _db.SaveChangesAsync();
             }
             else
             {
-                _db.Update(newComicBook);
+                _db.Update(comicbook);
                 await _db.SaveChangesAsync();
             }
         }
