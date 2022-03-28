@@ -31,7 +31,6 @@ namespace IoC
             services.AddScoped<ISeedRoleInitial, SeedUserRoleInitial>();
             services.AddScoped<IComicBookService, ComicBookService>();
             services.AddScoped<IComicBookRepository, ComicBookRepository>();
-
             services.AddScoped<IBuyService, BuyService>();
             services.AddScoped<IBuyRepository, BuyRepository>();
 

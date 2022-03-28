@@ -66,6 +66,7 @@ namespace API.Controllers
 
         [HttpGet]
         [Route("Logout")]
+        [AllowAnonymous]
         public async Task<ResultServices> Logout()
         {
             await _authentication.Logout();

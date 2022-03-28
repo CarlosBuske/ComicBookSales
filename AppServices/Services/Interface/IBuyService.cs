@@ -11,7 +11,7 @@ namespace AppServices.Services.Interface
 {
     public interface IBuyService
     {
-        Task<ResultServices> Checkout(CheckoutDTO buyDTO, int idUser);
+        Task<ResultServices> Checkout(CheckoutDTO buyDTO);
 
     }
 }

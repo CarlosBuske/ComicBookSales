@@ -31,7 +31,7 @@ namespace AppServices.Services
             _mapper = mapper;
         }
 
-        public async Task<ResultServices> Checkout(CheckoutDTO CheckoutDTO, int idUser)
+        public async Task<ResultServices> Checkout(CheckoutDTO CheckoutDTO)
         {
 
 
@@ -49,7 +49,6 @@ namespace AppServices.Services
             if (!resultValidateStock.Result.IsSuccess)
                 return ResultServices.Fail(resultValidateStock.Result.Message);
 
-            CheckoutDTO.IdUser = idUser;
             var checkout = _mapper.Map<Buy>(CheckoutDTO);
             await _buyRepository.InsertBuyAsync(checkout);
 
